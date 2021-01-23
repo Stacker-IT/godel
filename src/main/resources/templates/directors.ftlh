@@ -27,20 +27,23 @@
 
         <div class="row">
             <div class="col">
+                <small class="form-text text-muted">last name</small>
                 <#if lastName=="">
-                    <input type="text" class="form-control" placeholder="Last Name" name="lastName">
+                    <input type="text" class="form-control" name="lastName">
                 <#else>
-                    <input type="text" value=${lastName} class="form-control" placeholder="Last Name" name="lastName">
+                    <input type="text" value=${lastName} class="form-control" name="lastName">
                 </#if>
             </div>
             <div class="col">
-                <input type="date" value=${dateAfter} class="form-control" placeholder="After Date" name="afterDate">
+                <small class="form-text text-muted">Released from</small>
+                <input type="date" value=${dateAfter} class="form-control" name="afterDate">
             </div>
 
-            <div class="col">
-                <input type="date" value=${dateBefore} class="form-control" placeholder="Before Date" name="beforeDate">
+            <div class="col" >
+                <small class="form-text text-muted">Released until</small>
+                <input type="date" value=${dateBefore} class="form-control" name="beforeDate">
             </div>
-            <div class="col">
+            <div class="col mt-4">
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </div>
