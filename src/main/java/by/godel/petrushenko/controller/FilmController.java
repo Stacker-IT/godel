@@ -24,11 +24,10 @@ public class FilmController {
     @Autowired
     private DirectorRepo directorRepo;
 
-
     @GetMapping("/addfilm")
     public String addF(Map<String, Object> model) {
         Iterable<Director> directors = directorRepo.findAll();
-        model.put("directors",directors);
+        model.put("directors", directors);
         return "addfilm";
     }
 
@@ -38,23 +37,20 @@ public class FilmController {
                           @RequestParam(name = "directorId") Long directorId,
                           Map<String, Object> model) {
         Film filmByDB = filmRepo.findByName(film.getName());
-
         Iterable<Director> directors = directorRepo.findAll();
-        model.put("directors",directors);
+        model.put("directors", directors);
         if (filmByDB != null) {
             model.put("message", "Film exists!");
             return "addfilm";
         }
         Optional<Director> director = directorRepo.findById(directorId);
-        if (!director.isPresent()){
+        if (!director.isPresent()) {
             model.put("message", "Invalid director ID");
             return "addfilm";
         }
         film.setDirector(director.get());
         filmRepo.save(film);
         model.put("message", film.getName() + " added!");
-
-
         return "addfilm";
 
     }

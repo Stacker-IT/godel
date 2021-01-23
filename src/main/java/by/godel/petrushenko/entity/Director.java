@@ -1,20 +1,16 @@
 package by.godel.petrushenko.entity;
 
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Data
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "director")

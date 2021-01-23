@@ -20,7 +20,6 @@ public class InitController {
 
     @GetMapping("/init")
     public String init(Map<String, Object> model) {
-//        if (directorRepo.findByLastNameContains("Spielberg")) return "redirect:directors";
         Director director = new Director("Steven", "Spielberg", Date.valueOf("1946-12-18"));
         directorRepo.save(director);
         filmRepo.save(new Film("The Last Gun", Date.valueOf("1959-01-01"), "Drama", director));
@@ -45,6 +44,6 @@ public class InitController {
         filmRepo.save(new Film("The Blackguard", Date.valueOf("1925-01-01"), "Horror", director3));
 
 
-        return "redirect:directors";
+        return "redirect:/";
     }
 }
