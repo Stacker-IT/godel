@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -20,6 +21,8 @@ public class InitController {
 
     @GetMapping("/init")
     public String init(Map<String, Object> model) {
+        List<Director> directors = directorRepo.findByLastNameIsLike("Spie%");
+        if (!directors.isEmpty()) return "redirect:/";
         Director director = new Director("Steven", "Spielberg", Date.valueOf("1946-12-18"));
         directorRepo.save(director);
         filmRepo.save(new Film("The Last Gun", Date.valueOf("1959-01-01"), "Drama", director));

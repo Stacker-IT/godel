@@ -8,4 +8,5 @@
 Чтобы проинициализировать БД тестовыми данными необходимо перейти по адресу http://localhost:8080/init
 Добавить режиссера можно по адресу http://localhost:8080/adddirector
 Добавить фильм можно по адресу http://localhost:8080/addfilm
+REST сервис доступен по адресу http://localhost:8080/api
 Также приложение задеплоено на сервис Heroku по адресу https://godir.herokuapp.com/

@@ -10,7 +10,9 @@ import java.util.List;
 
 public interface FilmRepo extends JpaRepository<Film, Long> {
     Film findByName(String name);
+
     List<Film> findByDirectorAndReleaseDateBetween(Director director, Date dateAfter, Date dateBefore);
+
     List<Film> findByReleaseDateBetween(Date dateAfter, Date dateBefore);
 
 
