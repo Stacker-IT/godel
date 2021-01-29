@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,8 +33,13 @@ public class FilmSearch {
         if (beforeDate == null) beforeDate = new Date(new java.util.Date().getTime());
         if (afterDate == null) afterDate = Date.valueOf("1895-01-01");
         if (!lastName.equals("")) {
-            Director director = directorRepo.findByLastNameIsLike(lastName + "%").get(0);
-            return filmRepo.findByDirectorAndReleaseDateBetween(director, afterDate, beforeDate);
+            List<Director> directors = directorRepo.findByLastNameIsLike(lastName + "%");
+            List<Film> films = new ArrayList<>();
+            for (Director director : directors) {
+                films.addAll(filmRepo.findByDirectorAndReleaseDateBetween(director, afterDate, beforeDate));
+            }
+            return films;
+
         } else return filmRepo.findByReleaseDateBetween(afterDate, beforeDate);
 
     }
